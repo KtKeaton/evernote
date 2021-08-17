@@ -1,0 +1,13 @@
+<h1>筆記: <%= @note.title %></h1>
+<%= @note.content %>
+
+<%= form_with(model: @comment, url: note_comments_path(@note), local: false) do |f| %>
+  <%= f.text_area :content %>
+  <%= f.submit "新增留言" %>
+<% end %>
+
+<ul class="comments">
+<% @comments.each do |comment| %>
+  <li><%= comment.content %></li>
+<% end %>
+</ul>
